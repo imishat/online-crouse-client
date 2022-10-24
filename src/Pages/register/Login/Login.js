@@ -1,6 +1,6 @@
 
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { ListGroup } from 'react-bootstrap';
 
 import Button from 'react-bootstrap/Button';
@@ -11,6 +11,7 @@ import { AuthContex } from '../../../contex/AuthProvider';
 
 const Login = () => {
     const {logIn,providerLogin}=useContext(AuthContex)
+    const[error,setError]=useState('')
     const handelLogin=e=>{
        // e.prevenrDefault()
         e.preventDefault();
@@ -21,11 +22,16 @@ const Login = () => {
         .then(result=>{
             const user=result.user
             console.log(user)
+            from.reset()
+            setError('')
         })
-        .catch(error=>console.error(error)
-        )
+        .catch(error=>{console.error(error)
+            setError(error.meassage)
+         })
+
 
     }
+    //add google login
     const provider= new GoogleAuthProvider()
     const handelGoogle=()=>{
         providerLogin(provider)
@@ -33,7 +39,10 @@ const Login = () => {
             const user=result.user;
 
         })
-        .catch(error=>console.error(error))
+        .catch(error=>{
+            console.error(error)
+            setError(error.meassage)
+        })
 
     }
 
@@ -60,6 +69,7 @@ const Login = () => {
         </Button>
         <Link to='/register'>Go to Register</Link>
         <Form.Text className="text-danger">
+           
             
         </Form.Text>
         <div className='mt-3'>
@@ -67,7 +77,7 @@ const Login = () => {
                     <ListGroup.Item onClick={handelGoogle} className='mb-2'><FaGoogle /> Google</ListGroup.Item>
                     <ListGroup.Item className='mb-2'><FaGithub /> GitHud</ListGroup.Item>
                     
-                   
+                    <p className='text-info'>{error}</p>
                 </ListGroup>
         </div>
     </Form>
