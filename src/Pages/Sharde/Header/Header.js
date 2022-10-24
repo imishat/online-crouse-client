@@ -40,7 +40,7 @@ const Header = () => {
                 </Nav>
                 <Nav>
                     <>
-                        {
+                    {
                             user?.uid ?
                                 <>
                                     <span>{user?.displayName}</span>
@@ -55,7 +55,7 @@ const Header = () => {
 
 
                     </>
-                    <Link to="/profile">
+                    <Link>
                         {user?.photoURL ?
                             <Image
                                 style={{ height: '30px' }}

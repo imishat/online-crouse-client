@@ -6,6 +6,7 @@ import { ListGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {  FaGithub, FaGoogle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { AuthContex } from '../../../contex/AuthProvider';
 
 const Login = () => {
@@ -25,12 +26,12 @@ const Login = () => {
         )
 
     }
-    const provider=new GoogleAuthProvider()
+    const provider= new GoogleAuthProvider()
     const handelGoogle=()=>{
         providerLogin(provider)
         .then(result=>{
             const user=result.user;
-            console.log(user)
+
         })
         .catch(error=>console.error(error))
 
@@ -52,12 +53,16 @@ const Login = () => {
         </Form.Group>
 
         <Button variant="primary" type="submit">
+
             Login
+           
+        
         </Button>
+        <Link to='/register'>Go to Register</Link>
         <Form.Text className="text-danger">
             
         </Form.Text>
-        <div>
+        <div className='mt-3'>
         <ListGroup>
                     <ListGroup.Item onClick={handelGoogle} className='mb-2'><FaGoogle /> Google</ListGroup.Item>
                     <ListGroup.Item className='mb-2'><FaGithub /> GitHud</ListGroup.Item>
