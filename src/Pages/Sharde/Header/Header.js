@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Container, Image, Nav, Navbar } from 'react-bootstrap';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa'
 import { Button } from 'bootstrap';
 import { AuthContex } from '../../../contex/AuthProvider';
@@ -22,9 +22,9 @@ const Header = () => {
                         <Link>Course</Link>
                     </Nav.Link>
                     <Nav.Link>
-                        <Link to='/blogs'>
+                        <NavLink to='/blogs' className='isactive?color:red:color:black'>
                         Blogs
-                        </Link>
+                        </NavLink>
                     </Nav.Link>
                     <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
