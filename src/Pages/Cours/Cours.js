@@ -1,8 +1,27 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
 
 const Cours = () => {
+
+    const cours=useLoaderData()
+    console.log(cours)
+    const {img,name,title}=cours
+
     return ( 
-       <h1>hello</h1>
+       
+            <Card style={{ width: '18rem' }}>
+              <Card.Img variant="top" src={img} />
+              <Card.Body>
+                <Card.Title>{name}</Card.Title>
+                <Card.Text>
+                {title}
+                </Card.Text>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
     );
 };
 

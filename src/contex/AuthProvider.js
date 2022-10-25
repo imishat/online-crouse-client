@@ -23,18 +23,7 @@ const AuthProvider = ({children}) => {
     }
     // get user
 
-    useEffect(()=>{
-        const unsubcrib=onAuthStateChanged(auth,(currentUser)=>{
-           // setUser(currentUser)
-        })
-
-       
-
-       
-        return()=>{
-            unsubcrib()
-        }
-    },[])
+   
      // create user
      const createUser=(email,password)=>{
         return createUserWithEmailAndPassword(auth,email,password)

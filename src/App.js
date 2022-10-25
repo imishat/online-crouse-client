@@ -6,6 +6,7 @@ import Register from './Pages/register/Login/Register/Register';
 import Blogs from './Pages/Blogs/Blogs';
 import ErrorPage from './Pages/ErrorPage/ErrorPage';
 import Couress from './Pages/Couress/Couress';
+import Cours from './Pages/Cours/Cours';
 function App() {
   const router=createBrowserRouter([
     {
@@ -30,6 +31,11 @@ function App() {
           path:'/couress/:id',
           loader:({params})=>fetch(`http://localhost:5000/couress/${params.id}`),
           element:<Couress></Couress>
+        },
+        {
+          path:'/cours/:id',
+          loader:({params})=>fetch(`http://localhost:5000/cours/${params.id}`),
+          element:<Cours></Cours>
         }
       ]
     }
