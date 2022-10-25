@@ -7,6 +7,8 @@ import Blogs from './Pages/Blogs/Blogs';
 import ErrorPage from './Pages/ErrorPage/ErrorPage';
 import Couress from './Pages/Couress/Couress';
 import Cours from './Pages/Cours/Cours';
+import { render } from "react-dom";
+import All from './Pages/AllCours/All';
 function App() {
   const router=createBrowserRouter([
     {
@@ -17,6 +19,11 @@ function App() {
         {
           path:'/login',
           element:<Login></Login>
+        },
+        {
+          path:'/all',
+          loader:()=>fetch('http://localhost:5000/allCours'),
+          element:<All></All>
         },
         {
           path:'/register',
@@ -42,7 +49,7 @@ function App() {
 
   ])
   return (
-    <div className="App">
+    <div>
       
       <RouterProvider router={router}></RouterProvider>
 

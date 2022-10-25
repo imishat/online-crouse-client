@@ -7,7 +7,7 @@ const Catagry = ({cours}) => {
     console.log(cours)
     const{_id,title,name,img}=cours
     return (
-        <div>
+        <div className='mt-2'>
              <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={img} />
       <Card.Body>

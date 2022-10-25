@@ -11,20 +11,22 @@ const Main = () => {
        <div>
         
         <Header> </Header> 
-       
-        <Row>
-            <Col lg="2" className='mx-auto' >
+       <Container>
+
+        <Row className='mx-auto'>
+            <Col lg="2" className='' >
             <RightSide></RightSide>
             </Col>
-            <Col lg="5" >
+            <Col lg="3" >
             <Outlet></Outlet>
             
             </Col>
-            <Col lg="4">
+            <Col lg="6">
             <LeftSide></LeftSide>
             
             </Col>
         </Row>
+       </Container>
        
         <Footer></Footer>
 

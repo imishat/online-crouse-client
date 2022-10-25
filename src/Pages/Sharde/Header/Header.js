@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Container, Image, Nav, Navbar } from 'react-bootstrap';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link, NavLink } from 'react-router-dom';
@@ -7,7 +7,8 @@ import { Button } from 'bootstrap';
 import { AuthContex } from '../../../contex/AuthProvider';
 
 const Header = () => {
-    const {user}=useContext(AuthContex)
+   const {users}=useContext(AuthContex)
+   console.log(users)
     return (
         <Navbar collapseOnSelect className='mb-4' expand="lg" bg="light" variant="light">
         <Container>
@@ -19,7 +20,7 @@ const Header = () => {
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
                     <Nav.Link>
-                        <Link>Course</Link>
+                        <Link to='/all'>Course</Link>
                     </Nav.Link>
                     <Nav.Link>
                         <NavLink to='/blogs' className='isactive?color:red:color:black'>
@@ -41,9 +42,9 @@ const Header = () => {
                 <Nav>
                     <>
                     {
-                            user?.uid ?
+                            users?.uid ?
                                 <>
-                                    <span>{user?.displayName}</span>
+                                    <span>{users?.displayName}</span>
                                     <Button variant="light" >Log out</Button>
                                 </>
                                 :
@@ -56,11 +57,11 @@ const Header = () => {
 
                     </>
                     <Link>
-                        {user?.photoURL ?
+                        {users?.photoURL ?
                             <Image
                                 style={{ height: '30px' }}
                                 roundedCircle
-                                src={user?.photoURL}>
+                                src={users?.photoURL}>
                             </Image>
                             : <FaUser></FaUser>
                         }

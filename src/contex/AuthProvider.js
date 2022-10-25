@@ -10,18 +10,47 @@ import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithE
  const auth =getAuth(app)
 
 const AuthProvider = ({children}) => {
-    const [user,setUser]=useState(null)
+    const [users,setUsers]=useState([])
+    const [loading,setLoading]=useState('')
 
     // set login funtion
     const logIn=(email,password)=>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth,email,password)
     }
     //google login 
     const providerLogin = (provider) => {
+        setLoading(true)
         
         return signInWithPopup(auth, provider);
     }
     // get user
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            console.log('user', currentUser);
+
+           
+                //setUsers(currentUser);
+            
+            
+                setLoading(false);
+        });
+
+        return () => {
+            unsubscribe();
+        }
+
+    }, [])
+
+
+
+
+
+
+
+
+
+
 
    
      // create user
@@ -30,7 +59,7 @@ const AuthProvider = ({children}) => {
     }
     
     
-    const dataInfo={user,logIn,providerLogin,createUser}
+    const dataInfo={users,logIn,providerLogin,createUser}
     return (
         <AuthContex.Provider value={dataInfo}>
             {children}
