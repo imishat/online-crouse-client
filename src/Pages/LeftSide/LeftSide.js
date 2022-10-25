@@ -7,7 +7,7 @@ const LeftSide = () => {
     return (
         <>
        <div>
-       <h1>Frequently Asked Questions (FAQ)</h1>
+       <h1 className='text-warning'>Frequently Asked Questions (FAQ)</h1>
        </div>
         <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="0">

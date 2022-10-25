@@ -1,7 +1,9 @@
 import React from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import LeftSide from '../Pages/LeftSide/LeftSide';
 import RightSide from '../Pages/RightSide/RightSide';
+import Footer from '../Pages/Sharde/Footer/Footer';
 import Header from '../Pages/Sharde/Header/Header';
 
 const Main = () => {
@@ -9,20 +11,22 @@ const Main = () => {
        <div>
         
         <Header> </Header> 
-        <div className="row">
-            <div className="col">
-                <RightSide></RightSide>
-
-            </div>
-            <div className="col">
-                <Outlet></Outlet>
-
-            </div>
-            <div className="col">
-                <LeftSide></LeftSide>
-
-            </div>
-        </div>
+       
+        <Row>
+            <Col lg="2" className='mx-auto' >
+            <RightSide></RightSide>
+            </Col>
+            <Col lg="5" >
+            <Outlet></Outlet>
+            
+            </Col>
+            <Col lg="4">
+            <LeftSide></LeftSide>
+            
+            </Col>
+        </Row>
+       
+        <Footer></Footer>
 
 
         

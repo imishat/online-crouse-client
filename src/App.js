@@ -5,6 +5,7 @@ import Login from './Pages/register/Login/Login';
 import Register from './Pages/register/Login/Register/Register';
 import Blogs from './Pages/Blogs/Blogs';
 import ErrorPage from './Pages/ErrorPage/ErrorPage';
+import Couress from './Pages/Couress/Couress';
 function App() {
   const router=createBrowserRouter([
     {
@@ -24,6 +25,11 @@ function App() {
         {
           path:'/blogs',
           element:<Blogs></Blogs>
+        },
+        {
+          path:'/couress/:id',
+          loader:({params})=>fetch(`http://localhost:5000/couress/${params.id}`),
+          element:<Couress></Couress>
         }
       ]
     }

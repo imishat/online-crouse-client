@@ -12,7 +12,7 @@ const RightSide = () => {
         <div>
              {
                courses.map(courses=><p key={courses.id}>
-                   <Link>{courses.name}</Link>
+                   <Link to={`/couress/${courses.id}`}>{courses.name}</Link>
                </p>)
            }
 
