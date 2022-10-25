@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Catagry = ({cours}) => {
     console.log(cours)
-    const{_id,title,name,img}=cours
+    const{_id,title,name,img,category_id}=cours
     return (
         <div className='mt-2'>
              <Card style={{ width: '18rem' }}>
@@ -15,7 +15,7 @@ const Catagry = ({cours}) => {
         <Card.Text>
          {title}
         </Card.Text>
-        <Button variant="primary">
+        <Button variant="info">
             <Link to={`/cours/${_id}`} className="Text-white">Primiam</Link>
         </Button>
       </Card.Body>

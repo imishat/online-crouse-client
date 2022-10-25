@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import html2canvas from 'html2canvas';
@@ -9,7 +9,7 @@ const Cours = () => {
 
     const cours=useLoaderData()
     console.log(cours)
-    const {img,name,title}=cours
+    const {img,name,title,category_id,_id}=cours
 
     return ( 
        
@@ -20,9 +20,9 @@ const Cours = () => {
                 <Card.Text>
                 {title}
                 </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
+                <Button variant="info"><Link to={`/couress/${category_id}`}>Go Back</Link></Button>
                 <Button variant="primary" className='
-                me-2 m-3'>Domnlode</Button>
+                me-2 m-3'>Downlode</Button>
               </Card.Body>
             </Card>
     );
