@@ -17,11 +17,11 @@ const Main = () => {
             <Col lg="2" className='' >
             <RightSide></RightSide>
             </Col>
-            <Col lg="3" >
+            <Col lg="5" >
             <Outlet></Outlet>
             
             </Col>
-            <Col lg="6">
+            <Col lg="5">
             <LeftSide></LeftSide>
             
             </Col>
