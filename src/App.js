@@ -9,6 +9,7 @@ import Couress from './Pages/Couress/Couress';
 import Cours from './Pages/Cours/Cours';
 import { render } from "react-dom";
 import All from './Pages/AllCours/All';
+import PrivatRouts from './Routs/Privet/PrivatRouts';
 function App() {
   const router=createBrowserRouter([
     {
@@ -42,7 +43,7 @@ function App() {
         {
           path:'/cours/:id',
           loader:({params})=>fetch(`http://localhost:5000/cours/${params.id}`),
-          element:<Cours></Cours>
+          element:<PrivatRouts><Cours></Cours></PrivatRouts>
         }
       ]
     }

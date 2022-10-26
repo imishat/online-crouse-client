@@ -4,14 +4,15 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContex } from '../../contex/AuthProvider';
 
 const PrivatRouts = ({children}) => {
-    const {user, loading} = useContext(AuthContex);
+    const {users, loading} = useContext(AuthContex);
+   
     const location = useLocation();
 
     if(loading){
         return  <Spinner animation="border" variant="primary" />
     }
 
-    if(!user){
+    if(!users){
         return <Navigate to="/login" state={{from: location}} replace></Navigate>
     }
     return children;

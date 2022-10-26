@@ -16,7 +16,7 @@ const Catagry = ({cours}) => {
          {title}
         </Card.Text>
         <Button variant="info">
-            <Link to={`/cours/${_id}`} className="Text-white">Primiam</Link>
+            <Link to={`/cours/${_id}`} className="Text-white">Premimum Access</Link>
         </Button>
       </Card.Body>
     </Card>

@@ -6,16 +6,24 @@ import { ListGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {  FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContex } from '../../../contex/AuthProvider';
 
 const Login = () => {
     const {logIn,providerLogin}=useContext(AuthContex)
     const[error,setError]=useState('')
-    const handelLogin=e=>{
-       // e.prevenrDefault()
-        e.preventDefault();
-        const from=e.target;
+    const navigate=useNavigate();
+    const location=useLocation();
+   
+   
+   // const from=location.state?.from?pathname||'/';
+ const fromm = location.state?.from?.pathname || '/';
+
+
+    const handelLogin=(event)=>{
+      
+        event.preventDefault();
+        const from=event.target;
         const email=from.email.value;
         const password=from.password.value;
         logIn(email,password)
@@ -24,6 +32,7 @@ const Login = () => {
             console.log(user)
             from.reset()
             setError('')
+            navigate(fromm,{replace:true})
         })
         .catch(error=>{console.error(error)
             setError(error.meassage)
