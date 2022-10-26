@@ -46,6 +46,7 @@ const Login = () => {
         providerLogin(provider)
         .then(result=>{
             const user=result.user;
+            navigate(fromm,{replace:true})
 
         })
         .catch(error=>{
@@ -65,6 +66,7 @@ const Login = () => {
         gitProvider(gitprovider)
         .then(result=>{
             const user=result.user;
+            navigate(fromm,{replace:true})
         })
         .catch(error=>console.error(error))
 

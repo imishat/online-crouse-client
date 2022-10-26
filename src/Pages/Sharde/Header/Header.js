@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Container, Image, Nav, Navbar } from 'react-bootstrap';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link, NavLink } from 'react-router-dom';
-import { FaUser } from 'react-icons/fa'
+import { FaIdBadge, FaUser } from 'react-icons/fa'
 import { Button } from 'bootstrap';
 import { AuthContex } from '../../../contex/AuthProvider';
+import { Switch } from 'antd';
 
 const Header = () => {
    const {users,logout}=useContext(AuthContex)
@@ -16,6 +17,12 @@ const Header = () => {
        )
        .catch(error=>console.error(error))
    }
+   const [state,setState]=useState(false)
+   const toggle =()=>{
+       state?setState(false):setState(true)
+   }
+
+
     return (
         <Navbar collapseOnSelect className='mb-4' expand="lg" bg="light" variant="light">
         <Container>
@@ -34,16 +41,21 @@ const Header = () => {
                         Blogs
                         </NavLink>
                     </Nav.Link>
+                    <Nav.Link>
+                       <div>
+                           <Switch onClick={toggle}/>
+                           {
+                               state?<span>Light Mode</span>:<span>Dark Mode</span>
+                           }
+
+                           
+
+                       </div>
+
+
+                    </Nav.Link>
                     <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">
-                            Another action
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">
-                            Separated link
-                        </NavDropdown.Item>
+                      
                     </NavDropdown>
                 </Nav>
                 <Nav>
@@ -69,7 +81,7 @@ const Header = () => {
                                 <Image
                                     style={{ height: '30px' }}
                                     roundedCircle
-                                    src={users?.photoURL}>
+                                    src={users?.photoURL} title={users.displayName}>
                                 </Image>
                                 : <FaUser></FaUser>
                             }
