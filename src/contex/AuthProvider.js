@@ -24,6 +24,15 @@ const AuthProvider = ({children}) => {
         
         return signInWithPopup(auth, provider);
     }
+
+    // git hub login
+
+    const gitProvider=(gitprovider)=>{
+        setLoading(true)
+        return signInWithPopup(auth,gitprovider)
+
+
+    }
     // get user
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -63,7 +72,7 @@ const AuthProvider = ({children}) => {
     }
     
     
-    const dataInfo={users,logIn,providerLogin,createUser,logout}
+    const dataInfo={users,logIn,providerLogin,createUser,logout,gitProvider}
     return (
         <AuthContex.Provider value={dataInfo}>
             {children}

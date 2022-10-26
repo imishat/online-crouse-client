@@ -1,5 +1,5 @@
 
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { ListGroup } from 'react-bootstrap';
 
@@ -10,7 +10,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContex } from '../../../contex/AuthProvider';
 
 const Login = () => {
-    const {logIn,providerLogin}=useContext(AuthContex)
+    const {logIn,providerLogin,gitProvider}=useContext(AuthContex)
     const[error,setError]=useState('')
     const navigate=useNavigate();
     const location=useLocation();
@@ -52,6 +52,21 @@ const Login = () => {
             console.error(error)
             setError(error.meassage)
         })
+        
+
+
+
+        
+
+    }
+    //github login
+    const gitprovider=new GithubAuthProvider()
+    const git=()=>{
+        gitProvider(gitprovider)
+        .then(result=>{
+            const user=result.user;
+        })
+        .catch(error=>console.error(error))
 
     }
 
@@ -76,7 +91,7 @@ const Login = () => {
            
         
         </Button>
-        <Link to='/register'>Go to Register</Link>
+        <p><Link to='/register'>Go to Register</Link></p>
         <Form.Text className="text-danger">
            
             
@@ -84,7 +99,7 @@ const Login = () => {
         <div className='mt-3'>
         <ListGroup>
                     <ListGroup.Item onClick={handelGoogle} className='mb-2'><FaGoogle /> Google</ListGroup.Item>
-                    <ListGroup.Item className='mb-2'><FaGithub /> GitHud</ListGroup.Item>
+                    <ListGroup.Item onClick={git} className='mb-2'><FaGithub /> GitHud</ListGroup.Item>
                     
                     <p className='text-info'>{error}</p>
                 </ListGroup>

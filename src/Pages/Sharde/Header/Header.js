@@ -27,7 +27,7 @@ const Header = () => {
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
                     <Nav.Link>
-                        <Link to='/all'>Course</Link>
+                        <Link to='/'>Course</Link>
                     </Nav.Link>
                     <Nav.Link>
                         <NavLink to='/blogs' className='isactive?color:red:color:black'>
@@ -51,9 +51,10 @@ const Header = () => {
                         users?.uid?
 
                       <>
-                                        <span>{users?.displayName}</span>
-                                        <p onClick={ handelLogOut}>logOut</p>
-                                      
+                                        <span className='m-4'>{users?.displayName}</span>
+                                       <div>
+                                          <p onClick={handelLogOut}><Link to=''>LogOut</Link></p>
+                                       </div>
                                         
                                     </>
                                     :

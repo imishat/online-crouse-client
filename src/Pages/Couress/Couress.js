@@ -9,7 +9,7 @@ const Couress = () => {
         <div>
             <h1></h1>
             {
-                couress.map(cours=><Catagry key={cours.category_id} cours={cours}></Catagry>)
+                couress.map(course=><Catagry key={course.category_id} cours={course}></Catagry>)
             }
         </div>
     );
