@@ -4,7 +4,7 @@ import Catagry from '../Catagory/Catagry';
 
 const Couress = () => {
     const couress = useLoaderData();
-    console.log(couress)
+   
     return (
         <div>
             <h1></h1>

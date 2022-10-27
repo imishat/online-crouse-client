@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 const Catagry = ({cours}) => {
-    console.log(cours)
+  
     const{_id,title,name,img,category_id}=cours
     return (
         <div className='mt-2'>

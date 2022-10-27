@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { AuthContex } from '../../../../contex/AuthProvider';
 
 const Register = () => {
-    const {createUser}=useContext(AuthContex)
+    const {createUser,updateUserProfile}=useContext(AuthContex)
     const [error,setError]=useState('')
 
     const handleSubmit=(event)=>{
@@ -22,6 +22,7 @@ const Register = () => {
             const user=result.user;
             setError('')
             form.reset()
+            UpdateUserProfile(name, photoURL);
             
         })
         .catch( error=>{console.error(error)
@@ -29,6 +30,16 @@ const Register = () => {
         
 
     }
+    const UpdateUserProfile = (name, photoURL) => {
+      const profile = {
+          displayName: name,
+          photoURL: photoURL
+      }
+
+      updateUserProfile(profile)
+          .then(() => { })
+          .catch(error => console.error(error));
+  }
    
     return (
         <Form onSubmit={handleSubmit}>

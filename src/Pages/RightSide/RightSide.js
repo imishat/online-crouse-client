@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const RightSide = () => {
     const [courses,setCourses]=useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/catagory')
+        fetch('https://server-imishat.vercel.app/catagory')
         .then(res=>res.json())
         .then(data=>setCourses(data))
     },[])

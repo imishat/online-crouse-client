@@ -10,6 +10,7 @@ import Cours from './Pages/Cours/Cours';
 import { render } from "react-dom";
 import All from './Pages/AllCours/All';
 import PrivatRouts from './Routs/Privet/PrivatRouts';
+import LeftSide from './Pages/LeftSide/LeftSide';
 function App() {
   const router=createBrowserRouter([
     {
@@ -22,8 +23,8 @@ function App() {
           element:<Login></Login>
         },
         {
-          path:'/all',
-          loader:()=>fetch('http://localhost:5000/allCours'),
+          path:'/',
+          loader:()=>fetch('https://server-imishat.vercel.app/allCours'),
           element:<All></All>
         },
         {
@@ -37,13 +38,18 @@ function App() {
         },
         {
           path:'/couress/:id',
-          loader:({params})=>fetch(`http://localhost:5000/couress/${params.id}`),
+          loader:({params})=>fetch(`https://server-imishat.vercel.app/couress/${params.id}`),
           element:<Couress></Couress>
         },
         {
           path:'/cours/:id',
-          loader:({params})=>fetch(`http://localhost:5000/cours/${params.id}`),
+          loader:({params})=>fetch(`https://server-imishat.vercel.app/cours/${params.id}`),
           element:<PrivatRouts><Cours></Cours></PrivatRouts>
+        },
+        {
+          path:'/fqa',
+          element:<LeftSide></LeftSide>
+
         }
       ]
     }

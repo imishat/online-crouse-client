@@ -16,7 +16,6 @@ const Login = () => {
     const location=useLocation();
    
    
-   // const from=location.state?.from?pathname||'/';
  const fromm = location.state?.from?.pathname || '/';
 
 
@@ -29,7 +28,7 @@ const Login = () => {
         logIn(email,password)
         .then(result=>{
             const user=result.user
-            console.log(user)
+            
             from.reset()
             setError('')
             navigate(fromm,{replace:true})
